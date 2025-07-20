@@ -20,6 +20,7 @@
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'slide-up': 'slideUp 0.8s ease-out',
                         'fade-in': 'fadeIn 1s ease-out',
+                        'spin-slow': 'spin 3s linear infinite',
                     }
                 }
             }
@@ -53,71 +54,88 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        .game-logo {
+            transition: all 0.3s ease;
+        }
+        .game-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-dark via-slate-900 to-slate-800 text-white overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 glass-effect">
-        <div class="container mx-auto px-6 py-4">
+    <nav class="fixed top-0 w-full z-50 glass-effect transition-all duration-300">
+        <div class="container mx-auto px-4 lg:px-6 py-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center animate-glow">
                         <span class="text-white font-bold text-xl">N</span>
                     </div>
-                    <span class="text-2xl font-bold gradient-text">NexusGames</span>
+                    <span class="text-xl lg:text-2xl font-bold gradient-text">NexusGames</span>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#home" class="hover:text-accent transition-colors duration-300">Home</a>
-                    <a href="#games" class="hover:text-accent transition-colors duration-300">Games</a>
-                    <a href="#technology" class="hover:text-accent transition-colors duration-300">Technology</a>
-                    <a href="#about" class="hover:text-accent transition-colors duration-300">About</a>
-                    <a href="#contact" class="hover:text-accent transition-colors duration-300">Contact</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="#home" class="hover:text-accent transition-colors duration-300 text-sm lg:text-base">Home</a>
+                    <a href="#games" class="hover:text-accent transition-colors duration-300 text-sm lg:text-base">Games</a>
+                    <a href="#technology" class="hover:text-accent transition-colors duration-300 text-sm lg:text-base">Technology</a>
+                    <a href="#about" class="hover:text-accent transition-colors duration-300 text-sm lg:text-base">About</a>
+                    <a href="#contact" class="hover:text-accent transition-colors duration-300 text-sm lg:text-base">Contact</a>
                 </div>
                 
-                <button class="md:hidden text-white">
+                <button class="md:hidden text-white p-2" id="mobile-menu-btn">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
             </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="pt-4 pb-3 space-y-1">
+                    <a href="#home" class="block px-3 py-2 hover:text-accent transition-colors">Home</a>
+                    <a href="#games" class="block px-3 py-2 hover:text-accent transition-colors">Games</a>
+                    <a href="#technology" class="block px-3 py-2 hover:text-accent transition-colors">Technology</a>
+                    <a href="#about" class="block px-3 py-2 hover:text-accent transition-colors">About</a>
+                    <a href="#contact" class="block px-3 py-2 hover:text-accent transition-colors">Contact</a>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center relative overflow-hidden pt-20">
         <div class="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20"></div>
-        <div class="container mx-auto px-6 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8 animate-slide-up">
-                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+        <div class="container mx-auto px-4 lg:px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="space-y-6 lg:space-y-8 animate-slide-up text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
                         Crafting the
                         <span class="gradient-text">Future</span>
                         of Gaming
                     </h1>
-                    <p class="text-xl text-gray-300 leading-relaxed">
+                    <p class="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-2xl">
                         We create immersive gaming experiences powered by cutting-edge technology. 
                         From AI-driven narratives to revolutionary gameplay mechanics, we're pushing 
                         the boundaries of what's possible in interactive entertainment.
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <button class="bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button class="bg-gradient-to-r from-primary to-secondary px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105">
                             Explore Our Games
                         </button>
-                        <button class="border border-accent text-accent px-8 py-4 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300">
+                        <button class="border border-accent text-accent px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300">
                             Learn More
                         </button>
                     </div>
                 </div>
                 
-                <div class="relative animate-float">
-                    <div class="w-96 h-96 mx-auto relative">
+                <div class="relative animate-float mt-8 lg:mt-0">
+                    <div class="w-64 h-64 lg:w-96 lg:h-96 mx-auto relative">
                         <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-full opacity-20 animate-pulse"></div>
                         <div class="absolute inset-4 bg-gradient-to-r from-secondary to-accent rounded-full opacity-30 animate-pulse" style="animation-delay: 0.5s"></div>
                         <div class="absolute inset-8 bg-gradient-to-r from-accent to-primary rounded-full opacity-40 animate-pulse" style="animation-delay: 1s"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-48 h-48 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            <svg class="w-32 h-32 lg:w-48 lg:h-48 text-white animate-spin-slow" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2z"/>
                             </svg>
                         </div>
                     </div>
@@ -127,56 +145,71 @@
     </section>
 
     <!-- Games Section -->
-    <section id="games" class="py-20 bg-slate-900/50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 animate-fade-in">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text">Our Latest Games</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+    <section id="games" class="py-16 lg:py-20 bg-slate-900/50">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-12 lg:mb-16 animate-fade-in">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6 gradient-text">Our Latest Games</h2>
+                <p class="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
                     Discover our portfolio of innovative games that blend stunning visuals, 
                     engaging gameplay, and cutting-edge technology.
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <!-- Quantum Realms -->
                 <div class="glass-effect rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 group">
-                    <div class="h-48 bg-gradient-to-br from-primary to-secondary rounded-lg mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M21,6H3A1,1 0 0,0 2,7V17A1,1 0 0,0 3,18H21A1,1 0 0,0 22,17V7A1,1 0 0,0 21,6M20,16H4V8H20V16Z"/>
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <svg class="w-24 h-24 text-white game-logo relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z"/>
                         </svg>
+                        <div class="absolute top-4 right-4 w-4 h-4 bg-white/30 rounded-full animate-ping"></div>
+                        <div class="absolute bottom-4 left-4 w-6 h-6 bg-white/20 rounded-full animate-pulse"></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Quantum Realms</h3>
-                    <p class="text-gray-300 mb-4">An immersive sci-fi adventure that explores parallel dimensions with revolutionary physics-based gameplay.</p>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Quantum Realms</h3>
+                    <p class="text-gray-300 mb-4 text-sm lg:text-base">An immersive sci-fi adventure that explores parallel dimensions with revolutionary physics-based gameplay.</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-accent font-semibold">Action RPG</span>
-                        <button class="text-primary hover:text-secondary transition-colors">Learn More →</button>
+                        <span class="text-accent font-semibold text-sm">Action RPG</span>
+                        <button class="text-primary hover:text-secondary transition-colors text-sm">Learn More →</button>
                     </div>
                 </div>
                 
+                <!-- Neural Network -->
                 <div class="glass-effect rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 group">
-                    <div class="h-48 bg-gradient-to-br from-secondary to-accent rounded-lg mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                    <div class="h-48 bg-gradient-to-br from-secondary to-accent rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <svg class="w-24 h-24 text-white game-logo relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12,2A2,2 0 0,1 14,4C14,4.74 13.6,5.39 13,5.73V7.29C13.89,7.88 14.5,8.9 14.5,10A2.5,2.5 0 0,1 12,12.5A2.5,2.5 0 0,1 9.5,10C9.5,8.9 10.11,7.88 11,7.29V5.73C10.4,5.39 10,4.74 10,4A2,2 0 0,1 12,2M12,15A2,2 0 0,1 14,17A2,2 0 0,1 12,19A2,2 0 0,1 10,17A2,2 0 0,1 12,15M8,10A2,2 0 0,1 10,12A2,2 0 0,1 8,14A2,2 0 0,1 6,12A2,2 0 0,1 8,10M16,10A2,2 0 0,1 18,12A2,2 0 0,1 16,14A2,2 0 0,1 14,12A2,2 0 0,1 16,10Z"/>
                         </svg>
+                        <div class="absolute top-2 left-2 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                        <div class="absolute top-6 right-6 w-3 h-3 bg-purple-400 rounded-full animate-ping"></div>
+                        <div class="absolute bottom-6 left-8 w-2 h-2 bg-indigo-400 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Neural Network</h3>
-                    <p class="text-gray-300 mb-4">A cyberpunk thriller where AI and human consciousness merge in a battle for digital supremacy.</p>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Neural Network</h3>
+                    <p class="text-gray-300 mb-4 text-sm lg:text-base">A cyberpunk thriller where AI and human consciousness merge in a battle for digital supremacy.</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-accent font-semibold">Strategy</span>
-                        <button class="text-primary hover:text-secondary transition-colors">Learn More →</button>
+                        <span class="text-accent font-semibold text-sm">Strategy</span>
+                        <button class="text-primary hover:text-secondary transition-colors text-sm">Learn More →</button>
                     </div>
                 </div>
                 
-                <div class="glass-effect rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 group">
-                    <div class="h-48 bg-gradient-to-br from-accent to-primary rounded-lg mb-6 flex items-center justify-center">
-                        <svg class="w-24 h-24 text-white opacity-80" fill="currentColor" viewBox="0 0 24 24">
+                <!-- Stellar Odyssey -->
+                <div class="glass-effect rounded-xl p-6 hover:transform hover:scale-105 transition-all duration-300 group sm:col-span-2 lg:col-span-1">
+                    <div class="h-48 bg-gradient-to-br from-accent to-primary rounded-lg mb-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <svg class="w-24 h-24 text-white game-logo relative z-10" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12,2L13.09,8.26L22,9L13.09,9.74L12,16L10.91,9.74L2,9L10.91,8.26L12,2Z"/>
                         </svg>
+                        <div class="absolute top-8 left-8 w-1 h-1 bg-white rounded-full animate-pulse"></div>
+                        <div class="absolute top-12 right-12 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.3s"></div>
+                        <div class="absolute bottom-10 left-16 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 0.7s"></div>
+                        <div class="absolute bottom-16 right-8 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-delay: 1s"></div>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Stellar Odyssey</h3>
-                    <p class="text-gray-300 mb-4">Explore vast galaxies and build civilizations in this epic space exploration and management game.</p>
+                    <h3 class="text-xl lg:text-2xl font-bold mb-3 group-hover:text-accent transition-colors">Stellar Odyssey</h3>
+                    <p class="text-gray-300 mb-4 text-sm lg:text-base">Explore vast galaxies and build civilizations in this epic space exploration and management game.</p>
                     <div class="flex justify-between items-center">
-                        <span class="text-accent font-semibold">Simulation</span>
-                        <button class="text-primary hover:text-secondary transition-colors">Learn More →</button>
+                        <span class="text-accent font-semibold text-sm">Simulation</span>
+                        <button class="text-primary hover:text-secondary transition-colors text-sm">Learn More →</button>
                     </div>
                 </div>
             </div>
@@ -184,60 +217,60 @@
     </section>
 
     <!-- Technology Section -->
-    <section id="technology" class="py-20">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text">Cutting-Edge Technology</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+    <section id="technology" class="py-16 lg:py-20">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6 gradient-text">Cutting-Edge Technology</h2>
+                <p class="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
                     We leverage the latest technologies to create unparalleled gaming experiences.
                 </p>
             </div>
             
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-8">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="space-y-6 lg:space-y-8">
                     <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center group-hover:bg-secondary transition-colors">
+                        <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center group-hover:bg-secondary transition-colors flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M8.5,12.5L10,14L15.5,8.5L14,7L10,11L9,10L8.5,12.5Z"/>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold mb-2">AI-Powered Gameplay</h3>
-                            <p class="text-gray-300">Advanced machine learning algorithms create dynamic, responsive game worlds that adapt to player behavior.</p>
+                            <h3 class="text-lg lg:text-xl font-bold mb-2">AI-Powered Gameplay</h3>
+                            <p class="text-gray-300 text-sm lg:text-base">Advanced machine learning algorithms create dynamic, responsive game worlds that adapt to player behavior.</p>
                         </div>
                     </div>
                     
                     <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors">
+                        <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center group-hover:bg-accent transition-colors flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                                <path d="M4,6H20V16H4M20,18A2,2 0 0,0 22,16V6C22,4.89 21.1,4 20,4H4C2.89,4 2,4.89 2,6V16A2,2 0 0,0 4,18H0V20H24V18H20Z"/>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold mb-2">Cloud Gaming</h3>
-                            <p class="text-gray-300">Stream high-quality games instantly across any device with our revolutionary cloud infrastructure.</p>
+                            <h3 class="text-lg lg:text-xl font-bold mb-2">Cloud Gaming</h3>
+                            <p class="text-gray-300 text-sm lg:text-base">Stream high-quality games instantly across any device with our revolutionary cloud infrastructure.</p>
                         </div>
                     </div>
                     
                     <div class="flex items-start space-x-4 group">
-                        <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors">
+                        <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center group-hover:bg-primary transition-colors flex-shrink-0">
                             <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                                <path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M8,6V16L16,12L8,6Z"/>
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold mb-2">Virtual Reality</h3>
-                            <p class="text-gray-300">Immerse yourself in breathtaking virtual worlds with our state-of-the-art VR technology.</p>
+                            <h3 class="text-lg lg:text-xl font-bold mb-2">Virtual Reality</h3>
+                            <p class="text-gray-300 text-sm lg:text-base">Immerse yourself in breathtaking virtual worlds with our state-of-the-art VR technology.</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="relative">
+                <div class="relative mt-8 lg:mt-0">
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="h-40 bg-gradient-to-br from-primary/30 to-transparent rounded-lg glass-effect"></div>
-                        <div class="h-40 bg-gradient-to-br from-secondary/30 to-transparent rounded-lg glass-effect mt-8"></div>
-                        <div class="h-40 bg-gradient-to-br from-accent/30 to-transparent rounded-lg glass-effect -mt-4"></div>
-                        <div class="h-40 bg-gradient-to-br from-primary/30 to-transparent rounded-lg glass-effect mt-4"></div>
+                        <div class="h-32 lg:h-40 bg-gradient-to-br from-primary/30 to-transparent rounded-lg glass-effect"></div>
+                        <div class="h-32 lg:h-40 bg-gradient-to-br from-secondary/30 to-transparent rounded-lg glass-effect mt-8"></div>
+                        <div class="h-32 lg:h-40 bg-gradient-to-br from-accent/30 to-transparent rounded-lg glass-effect -mt-4"></div>
+                        <div class="h-32 lg:h-40 bg-gradient-to-br from-primary/30 to-transparent rounded-lg glass-effect mt-4"></div>
                     </div>
                 </div>
             </div>
@@ -245,27 +278,27 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-slate-900/50">
-        <div class="container mx-auto px-6">
+    <section id="about" class="py-16 lg:py-20 bg-slate-900/50">
+        <div class="container mx-auto px-4 lg:px-6">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl lg:text-5xl font-bold mb-8 gradient-text">About NexusGames</h2>
-                <p class="text-xl text-gray-300 leading-relaxed mb-8">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-6 lg:mb-8 gradient-text">About NexusGames</h2>
+                <p class="text-lg lg:text-xl text-gray-300 leading-relaxed mb-8">
                     Founded by passionate gamers and technologists, NexusGames is at the forefront of interactive entertainment innovation. 
                     Our team combines decades of industry experience with cutting-edge research to create games that push the boundaries 
                     of what's possible.
                 </p>
-                <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="grid sm:grid-cols-3 gap-6 lg:gap-8 mt-8 lg:mt-12">
                     <div class="text-center">
-                        <div class="text-4xl font-bold gradient-text mb-2">150+</div>
-                        <div class="text-gray-300">Games Published</div>
+                        <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">150+</div>
+                        <div class="text-gray-300 text-sm lg:text-base">Games Published</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-bold gradient-text mb-2">50M+</div>
-                        <div class="text-gray-300">Players Worldwide</div>
+                        <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">50M+</div>
+                        <div class="text-gray-300 text-sm lg:text-base">Players Worldwide</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-4xl font-bold gradient-text mb-2">25+</div>
-                        <div class="text-gray-300">Awards Won</div>
+                        <div class="text-3xl lg:text-4xl font-bold gradient-text mb-2">25+</div>
+                        <div class="text-gray-300 text-sm lg:text-base">Awards Won</div>
                     </div>
                 </div>
             </div>
@@ -273,64 +306,64 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20">
-        <div class="container mx-auto px-6">
+    <section id="contact" class="py-16 lg:py-20">
+        <div class="container mx-auto px-4 lg:px-6">
             <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl lg:text-5xl font-bold mb-6 gradient-text">Get In Touch</h2>
-                    <p class="text-xl text-gray-300">Ready to embark on your next gaming adventure? Let's connect!</p>
+                <div class="text-center mb-12 lg:mb-16">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-6 gradient-text">Get In Touch</h2>
+                    <p class="text-lg lg:text-xl text-gray-300">Ready to embark on your next gaming adventure? Let's connect!</p>
                 </div>
                 
-                <div class="grid lg:grid-cols-2 gap-12">
-                    <div class="space-y-8">
+                <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                    <div class="space-y-6 lg:space-y-8">
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                            <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12,2C8.13,2 5,5.13 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9C19,5.13 15.87,2 12,2M12,7A2,2 0 0,1 14,9A2,2 0 0,1 12,11A2,2 0 0,1 10,9A2,2 0 0,1 12,7Z"/>
                                 </svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold">Visit Us</h3>
-                                <p class="text-gray-300">123 Tech Valley, Silicon City, SC 12345</p>
+                                <p class="text-gray-300 text-sm lg:text-base">123 Tech Valley, Silicon City, SC 12345</p>
                             </div>
                         </div>
                         
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center">
+                            <div class="w-12 h-12 bg-secondary rounded-lg flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
                                 </svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold">Call Us</h3>
-                                <p class="text-gray-300">+1 (555) 123-4567</p>
+                                <p class="text-gray-300 text-sm lg:text-base">+1 (555) 123-4567</p>
                             </div>
                         </div>
                         
                         <div class="flex items-center space-x-4">
-                            <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center">
+                            <div class="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
                                 <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
                                 </svg>
                             </div>
                             <div>
                                 <h3 class="text-lg font-semibold">Email Us</h3>
-                                <p class="text-gray-300">hello@nexusgames.com</p>
+                                <p class="text-gray-300 text-sm lg:text-base">hello@nexusgames.com</p>
                             </div>
                         </div>
                     </div>
                     
-                    <form class="space-y-6">
+                    <form class="space-y-4 lg:space-y-6">
                         <div>
-                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors">
+                            <input type="text" placeholder="Your Name" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors text-white placeholder-gray-400">
                         </div>
                         <div>
-                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors">
+                            <input type="email" placeholder="Your Email" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors text-white placeholder-gray-400">
                         </div>
                         <div>
-                            <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors resize-none"></textarea>
+                            <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg focus:outline-none focus:border-primary transition-colors resize-none text-white placeholder-gray-400"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary px-8 py-4 rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105">
+                        <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary px-6 lg:px-8 py-3 lg:py-4 rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105">
                             Send Message
                         </button>
                     </form>
@@ -340,22 +373,22 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
+    <footer class="bg-slate-900 py-8 lg:py-12">
+        <div class="container mx-auto px-4 lg:px-6">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+                <div class="sm:col-span-2 lg:col-span-1">
                     <div class="flex items-center space-x-3 mb-4">
                         <div class="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center">
                             <span class="text-white font-bold text-xl">N</span>
                         </div>
-                        <span class="text-2xl font-bold gradient-text">NexusGames</span>
+                        <span class="text-xl lg:text-2xl font-bold gradient-text">NexusGames</span>
                     </div>
-                    <p class="text-gray-400">Crafting the future of gaming through innovation and technology.</p>
+                    <p class="text-gray-400 text-sm lg:text-base">Crafting the future of gaming through innovation and technology.</p>
                 </div>
                 
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Games</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <ul class="space-y-2 text-gray-400 text-sm lg:text-base">
                         <li><a href="#" class="hover:text-accent transition-colors">Quantum Realms</a></li>
                         <li><a href="#" class="hover:text-accent transition-colors">Neural Network</a></li>
                         <li><a href="#" class="hover:text-accent transition-colors">Stellar Odyssey</a></li>
@@ -364,7 +397,7 @@
                 
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2 text-gray-400">
+                    <ul class="space-y-2 text-gray-400 text-sm lg:text-base">
                         <li><a href="#" class="hover:text-accent transition-colors">About Us</a></li>
                         <li><a href="#" class="hover:text-accent transition-colors">Careers</a></li>
                         <li><a href="#" class="hover:text-accent transition-colors">Press</a></li>
@@ -387,13 +420,21 @@
                 </div>
             </div>
             
-            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-gray-400">
+            <div class="border-t border-slate-800 mt-8 lg:mt-12 pt-6 lg:pt-8 text-center text-gray-400 text-sm lg:text-base">
                 <p>&copy; 2024 NexusGames. All rights reserved. Crafted with passion and cutting-edge technology.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -404,6 +445,8 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu if open
+                    mobileMenu.classList.add('hidden');
                 }
             });
         });
